@@ -9,7 +9,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-edit-users',
   standalone: true,
-  imports: [],
+  imports: [FormsModule, ReactiveFormsModule, MatButtonModule, MatFormFieldModule, MatIconModule, MatInputModule, RouterLink],
   templateUrl: './edit-users.component.html',
   styleUrl: './edit-users.component.scss'
 })

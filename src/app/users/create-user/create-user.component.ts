@@ -5,6 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
+import { DatabaseService } from '../../shared/services/database/database.service'
 
 @Component({
   selector: 'app-create-user',
@@ -18,8 +19,9 @@ export class CreateUserComponent {
 
   createUserFormGroup!: FormGroup;
   protected hide:boolean = true;
-  
-  constructor() {
+  private databaseService:DatabaseService;
+  constructor(databaseService:DatabaseService) {
+    this.databaseService = databaseService;
     this.createUserFormGroup = new FormGroup({
       fName: new FormControl('', [Validators.required, Validators.minLength(3)]),
       lName: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -59,6 +61,6 @@ export class CreateUserComponent {
     return this.createUserFormGroup.get('password').hasError('pattern') ? 'You must enter a valid password' : '';
   }
   createUser(){
-
+    this.databaseService.createUser({fName:'Muhammad', lName:'Abdullah', email:'m.abdullah4298@gmail.com', password:'asdf', imgURL: 'https://material.angular.io/assets/img/examples/shiba1.jpg'});
   }
 }

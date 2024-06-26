@@ -1,28 +1,30 @@
 <main class="main">
   <header>
     <mat-toolbar color="primary">
+      
       <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
         <mat-icon>menu</mat-icon>
       </button>
       
-      <span routerLink="/home" routerLinkActive="active">Hawkeye</span>
+      <span id="logo" routerLink="/home" routerLinkActive="active">Hawkeye</span>
       
       <span class="example-spacer"></span>
       
       <button mat-raised-button color="primary" type="button" routerLink="/signin" routerLinkActive="active">Sign in</button>
 
       <button mat-raised-button color="primary" type="button" routerLink="/video-player" routerLinkActive="active">Video Player</button>
-      <button mat-raised-button color="primary" type="button" routerLink="/users" routerLinkActive="active">Users</button>
-      
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        <mat-icon>favorite</mat-icon>
-      </button>
-      
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-        <mat-icon>share</mat-icon>
-      </button>
 
-      <app-user-profile [initials]="'JA'" ></app-user-profile> <app-user-profile src="assets\aaa.png"></app-user-profile>
+      <button mat-raised-button color="primary" type="button" routerLink="/users" routerLinkActive="active">Users</button>
+
+      <mat-card id="card" >
+          <img mat-card-avatar class="example-header-image" [matMenuTriggerFor]="personal_menu"/>
+      </mat-card>
+
+      <mat-menu #personal_menu="matMenu">
+        <button mat-menu-item routerLink="/users/edit-users" routerLinkActive="active">Edit Profile</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+
     </mat-toolbar>
   </header>
   <router-outlet/>
